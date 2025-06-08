@@ -59,3 +59,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Add these custom styles */
+@layer utilities {
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+}
+
+@layer base {
+    html {
+        scroll-padding-top: 80px; 
+        scroll-behavior: smooth;
+    }
+}

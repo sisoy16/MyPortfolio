@@ -1,22 +1,25 @@
 import { Button } from "@/components/ui/button";
-import { Link2Icon } from "@radix-ui/react-icons";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 
-export default function Project({ title, alt, image, description, url }) {
+export default function Project({ id, title, alt, image, year }) {
     return (
-        <div className="relative border bg-background dark:bg-secondary max-w-fit rounded-md grid place-content-center">
-            <div className="p-1">
-                <img className="w-full max-w-[340px] md:max-w-[300px] h-full rounded-md aspect-video" src={image} alt={alt} />
+        <div className="relative border bg-background dark:bg-secondary rounded-md grid place-content-center">
+            <div className="p-2">
+                <img className="w-full max-w-[400px] md:max-w-[380px] h-full rounded-md aspect-video" src={image} alt={alt} />
             </div>
-            <div className="absolute bottom-[84px] left-3 grid gap-2">
-                <span className="text-xs dark:bg-secondary bg-background p-2 px-3 rounded">{alt}</span>
+            <div className="absolute bottom-[94px] left-5 grid gap-2">
+                <span className="text-xs dark:bg-secondary bg-background p-2 px-3 rounded">
+                    {alt} • {year}
+                </span>
             </div>
-            <div className="flex items-center justify-between px-4 py-4 mt-[5px]">
-                <h1 className="text-lg">{title}</h1>
-                <Button size="sm">
-                    <Link href={url || "/"} target="_blank" className="flex items-center gap-1 justify-center">view <ArrowUpRight className="h-4 w-4" /></Link>
+            <div className="flex items-center justify-between px-6 py-5 mt-[5px]">
+                <h1 className="text-xl">{title}</h1>
+                <Button asChild size="sm">
+                    <Link href={`/projects/${id}`}>
+                        view
+                    </Link>
                 </Button>
             </div>
         </div>

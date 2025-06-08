@@ -3,10 +3,31 @@ import Link from "next/link";
 
 export default function Social() {
     return (
-        <div className="flex gap-2 items-center -ml-1 bg-secondary rounded-full p-2 w-fit">
-            <Link href="https://github.com/r2hu1" className="hover:text-primary"><GitHubLogoIcon className="h-4 w-4" /></Link>
-            <Link href="https://instagram.com/r.rah_ul" className="hover:text-primary"><InstagramLogoIcon className="h-4 w-4" /></Link>
-            <Link href="https://x.com/r2hu1" className="hover:text-primary"><TwitterLogoIcon className="h-4 w-4" /></Link>
+        <div className="flex gap-4 items-center -ml-1 bg-secondary rounded-full p-4 w-fit">
+            <Link 
+                href="https://github.com/sisoy16" 
+                className="hover:text-primary transition-colors duration-200" 
+                target="_blank" 
+                rel="noopener noreferrer"
+            >
+                <GitHubLogoIcon className="h-6 w-6 md:h-7 md:w-7" />
+            </Link>
+            <Link 
+                href="https://www.instagram.com/sisoooooy/" 
+                className="hover:text-primary transition-colors duration-200" 
+                target="_blank" 
+                rel="noopener noreferrer"
+            >
+                <InstagramLogoIcon className="h-6 w-6 md:h-7 md:w-7" />
+            </Link>
+            <Link 
+                href="https://x.com/jerwincolipano" 
+                className="hover:text-primary transition-colors duration-200" 
+                target="_blank" 
+                rel="noopener noreferrer"
+            >
+                <TwitterLogoIcon className="h-6 w-6 md:h-7 md:w-7" />
+            </Link>
         </div>
     )
 }
