@@ -84,6 +84,16 @@ module.exports = {
           '0%, 100%': { transform: 'rotate(45deg) translate(0, 0)', opacity: '0.5' },
           '50%': { transform: 'rotate(45deg) translate(4px, 4px)', opacity: '1' },
         },
+        bounce: {
+          '0%, 100%': {
+            transform: 'translateY(-4%)',
+            animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
+          },
+          '50%': {
+            transform: 'translateY(0)',
+            animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -93,7 +103,7 @@ module.exports = {
         'mouse-scroll': 'mouseScroll 2s ease-in-out infinite',
         'arrow-bounce': 'arrowBounce 2s ease-in-out infinite',
         'arrow-bounce-delayed': 'arrowBounce 2s ease-in-out infinite 0.5s',
-        'bounce-slow': 'bounce 3s ease-in-out infinite',
+        'bounce-slow': 'bounce 3s infinite',
       },
     },
   },

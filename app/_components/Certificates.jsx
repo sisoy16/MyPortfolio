@@ -17,6 +17,24 @@ const certificates = [
         date: "2025",
         image: "/certificates/certificate2.png",
     },
+     {
+        id: 3,
+        title: "Machine Learning",
+        date: "2025",
+        image: "/certificates/certificate3.png",
+    },
+     {
+        id: 4,
+        title: "Capstone Writing 1",
+        date: "2024",
+        image: "/certificates/certificate4.png",
+    },
+     {
+        id: 5,
+        title: "Capstone Writing 2",    
+        date: "2024",
+        image: "/certificates/certificate5.png",
+    },
 ]
 
 export default function Certificates() {
