@@ -9,9 +9,25 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ModeToggle } from "./ModeToggle";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Header() {
+    const router = useRouter();
+    const pathname = usePathname();
+
     const scrollToSection = (sectionId) => {
+        if (pathname !== "/") {
+            router.push("/");
+            // Add small delay to ensure navigation completes before scrolling
+            setTimeout(() => {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }
+            }, 100);
+            return;
+        }
+
         const element = document.getElementById(sectionId);
         if (element) {
             element.scrollIntoView({ behavior: "smooth" });

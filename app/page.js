@@ -4,8 +4,6 @@ import Project from './_components/Project'
 import AboutMe from './_components/AboutMe'
 import Certificates from './_components/Certificates'
 import ContactMe from './_components/ContactMe'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 
 export default function Home() {
     return (
@@ -33,22 +31,9 @@ export default function Home() {
             <section id="projects">
                 <div className="text-center mb-5">
                     <h1 className="text-xl font-bold">Projects<span className="text-primary">.</span></h1>
-                    <p className='text-xs'>Some of my projects i built, click view all <br /> for all projects<span className="text-primary">.</span></p>
+                    <p className='text-xs'>Some of my projects i built<span className="text-primary">.</span></p>
                 </div>
-                
-                <div className='flex gap-8 flex-wrap items-center justify-center md:px-20 lg:px-32 px-5'>
-                    {projects.slice(0, 3).map(project => (
-                        <Project key={project.id} {...project} />
-                    ))}
-                </div>
-
-                {projects.length >= 4 && (
-                    <div className='grid place-content-center mt-10'>
-                        <Button asChild variant="secondary">
-                            <Link href="/projects">View All Projects</Link>
-                        </Button>
-                    </div>
-                )}
+                <Project />
             </section>
 
             <section id="contact">

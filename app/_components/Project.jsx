@@ -1,27 +1,58 @@
+"use client"
+
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { motion } from "framer-motion";
+import { projects } from "@/lib/projects";
 import Link from "next/link";
 
+export default function Project() {
+    if (!projects || projects.length === 0) {
+        return <div>No projects available</div>;
+    }
 
-export default function Project({ id, title, alt, image, year }) {
     return (
-        <div className="relative border bg-background dark:bg-secondary rounded-md grid place-content-center">
-            <div className="p-2">
-                <img className="w-full max-w-[400px] md:max-w-[380px] h-full rounded-md aspect-video" src={image} alt={alt} />
+        <section className="py-20">
+            <div className="max-w-[1050px] mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    {projects.map((project) => (
+                        <motion.div
+                            key={project.id}
+                            className="bg-background dark:bg-secondary rounded-lg overflow-hidden shadow-lg border border-black dark:border-black"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                        >
+                            <div className="h-[250px] overflow-hidden">
+                                <motion.img 
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="w-full h-full object-cover"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                />
+                            </div>
+                            <div className="h-[150px] p-4 flex flex-col justify-between">
+                                <div>
+                                    <span className="inline-block text-xs bg-primary/10 px-3 py-1 rounded-full mb-2">
+                                        {project.year}
+                                    </span>
+                                    <h3 className="text-lg font-semibold line-clamp-2">
+                                        {project.title}
+                                    </h3>
+                                </div>
+                                <Button asChild size="sm" className="self-end">
+                                    <Link href={`/projects/${project.id}`}>
+                                        view
+                                    </Link>
+                                </Button>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
-            <div className="absolute bottom-[94px] left-5 grid gap-2">
-                <span className="text-xs dark:bg-secondary bg-background p-2 px-3 rounded">
-                    {alt} • {year}
-                </span>
-            </div>
-            <div className="flex items-center justify-between px-6 py-5 mt-[5px]">
-                <h1 className="text-xl">{title}</h1>
-                <Button asChild size="sm">
-                    <Link href={`/projects/${id}`}>
-                        view
-                    </Link>
-                </Button>
-            </div>
-        </div>
-    )
+        </section>
+    );
 }

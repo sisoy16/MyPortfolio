@@ -6,16 +6,22 @@ import Link from 'next/link';
 import { TypeAnimation } from 'react-type-animation';
 import Social from '@/components/Social';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export default function Hero() {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 2500); // Loading duration
-        return () => clearTimeout(timer);
-    }, []);
+        // Only show loading on initial page load, not when navigating back
+        if (pathname === '/' && !document.referrer.includes('/projects/')) {
+            setIsLoading(true);
+            const timer = setTimeout(() => {
+                setIsLoading(false);
+            }, 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [pathname]);
 
     return (
         <>
